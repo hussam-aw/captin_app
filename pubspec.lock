@@ -115,6 +115,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.6"
+<<<<<<< HEAD
   get_storage:
     dependency: "direct main"
     description:
@@ -123,6 +124,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+=======
+>>>>>>> 8376da0bf14b48b0ed0688f065d29a8f48db1d08
   http:
     dependency: "direct main"
     description:
@@ -195,6 +198,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+<<<<<<< HEAD
   path_provider:
     dependency: transitive
     description:
@@ -259,6 +263,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
+=======
+>>>>>>> 8376da0bf14b48b0ed0688f065d29a8f48db1d08
   pointycastle:
     dependency: transitive
     description:
@@ -344,6 +350,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.4-beta"
+<<<<<<< HEAD
   win32:
     dependency: transitive
     description:
@@ -360,6 +367,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+=======
+>>>>>>> 8376da0bf14b48b0ed0688f065d29a8f48db1d08
 sdks:
   dart: ">=3.1.0-185.0.dev <4.0.0"
   flutter: ">=3.13.0"
