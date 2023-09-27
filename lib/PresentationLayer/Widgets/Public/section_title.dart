@@ -7,7 +7,7 @@ class SectionTitle extends StatelessWidget {
     super.key,
     required this.title,
     this.textStyle = UITextStyle.medium,
-    this.titleColor = UIColors.red,
+    this.titleColor = UIColors.white,
   });
 
   final String title;
@@ -16,14 +16,11 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Text(
-        title,
-        softWrap: true,
-        style: textStyle.copyWith(
-          color: titleColor,
-        ),
+    return Text(
+      title,
+      softWrap: true,
+      style: textStyle.copyWith(
+        color: titleColor,
       ),
     );
   }
