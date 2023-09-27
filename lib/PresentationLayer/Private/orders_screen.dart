@@ -1,4 +1,5 @@
 import 'package:captin_app/BussinessLayer/Controllers/orders_controller.dart';
+import 'package:captin_app/Constants/get_routes.dart';
 import 'package:captin_app/Constants/ui_text_styles.dart';
 import 'package:captin_app/PresentationLayer/Widgets/Private/order_box.dart';
 import 'package:captin_app/PresentationLayer/Widgets/Public/loading_item.dart';
@@ -27,6 +28,10 @@ class OrdersScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return OrderBox(
                 order: orders[index],
+                onTap: () {
+                  Get.toNamed(AppRoutes.orderInfoScreen,
+                      arguments: orders[index]);
+                },
               );
             },
             separatorBuilder: (context, index) => spacerHeight(),
