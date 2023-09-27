@@ -13,7 +13,7 @@ const acceptButtonStyle = ButtonStyle(
     ),
   ),
   minimumSize: MaterialStatePropertyAll<Size>(
-    Size(double.infinity, 44),
+    Size(double.infinity, 40),
   ),
 );
 
