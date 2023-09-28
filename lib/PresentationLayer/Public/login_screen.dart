@@ -18,55 +18,52 @@ class LoginScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 80),
-            child: Column(
-              children: [
-                const AppIconHeader(),
-                const PageTitle(
-                  alignment: Alignment.center,
-                  title: 'تسجيل الدخول',
-                ),
-                spacerHeight(),
-                Expanded(
-                  flex: 3,
-                  child: Form(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          OrdTextFormField(
-                            controller: authController.phoneNumberController,
-                            keyboardType: TextInputType.phone,
-                            hintText: 'رقم الموبايل',
-                          ),
-                          spacerHeight(height: 22),
-                          OrdTextFormField(
-                            controller: authController.passwordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obsecureText: true,
-                            hintText: 'كلمة المرور',
-                          ),
-                          spacerHeight(height: 22),
-                          Obx(
-                            () {
-                              return AcceptButton(
-                                onPressed: () {
-                                  authController.login();
-                                },
-                                text: 'المتابعة',
-                                isLoading: authController.logging.value,
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 80),
+              child: Column(
+                children: [
+                  const AppIconHeader(),
+                  const PageTitle(
+                    alignment: Alignment.center,
+                    title: 'تسجيل الدخول',
+                  ),
+                  spacerHeight(),
+                  Form(
+                    child: Column(
+                      children: [
+                        OrdTextFormField(
+                          controller: authController.phoneNumberController,
+                          keyboardType: TextInputType.phone,
+                          hintText: 'رقم الموبايل',
+                        ),
+                        spacerHeight(height: 22),
+                        OrdTextFormField(
+                          controller: authController.passwordController,
+                          keyboardType: TextInputType.visiblePassword,
+                          obsecureText: true,
+                          hintText: 'كلمة المرور',
+                        ),
+                        spacerHeight(height: 22),
+                        Obx(
+                          () {
+                            return AcceptButton(
+                              onPressed: () {
+                                authController.login();
+                              },
+                              text: 'المتابعة',
+                              isLoading: authController.logging.value,
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
