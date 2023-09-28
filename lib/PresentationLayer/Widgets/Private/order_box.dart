@@ -49,8 +49,8 @@ class OrderBox extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'حالة الطلب: قيد التوصيل',
+                    Text(
+                      'حالة الطلب: ${order.status}',
                       style: UITextStyle.body,
                     ),
                     spacerHeight(height: 12),
