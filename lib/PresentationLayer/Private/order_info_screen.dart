@@ -1,3 +1,4 @@
+import 'package:captin_app/BussinessLayer/Controllers/orders_controller.dart';
 import 'package:captin_app/Constants/ui_colors.dart';
 import 'package:captin_app/Constants/ui_text_styles.dart';
 import 'package:captin_app/DataAccesslayer/Models/order.dart';
@@ -17,6 +18,7 @@ import 'package:get/get.dart';
 class OrderInfoScreen extends StatelessWidget {
   OrderInfoScreen({super.key});
 
+  final ordersController = Get.find<OrdersController>();
   final Order order = Get.arguments;
 
   @override
@@ -108,23 +110,33 @@ class OrderInfoScreen extends StatelessWidget {
               spacerHeight(),
               Column(
                 children: [
-                  AcceptButton(
-                    text: 'تم التوصيل',
-                    onPressed: () {},
-                  ),
+                  Obx(() {
+                    return AcceptButton(
+                      text: 'تم التوصيل',
+                      onPressed: () {
+                        ordersController.changeOrderStatusToDelivered(order.id);
+                      },
+                      isLoading: ordersController.orderDeliveredStatus.value,
+                    );
+                  }),
                   spacerHeight(),
-                  AcceptButton(
-                    text: 'تغيير الحالة',
-                    backgroundColor: UIColors.white,
-                    textStyle: UITextStyle.body.copyWith(
-                      color: UIColors.red,
-                    ),
-                    onPressed: () {
-                      Get.bottomSheet(ChangeOrderStatusBottomSheet(
-                        order: order,
-                      ));
-                    },
-                  ),
+                  Obx(() {
+                    return AcceptButton(
+                      text: 'تغيير الحالة',
+                      backgroundColor: UIColors.white,
+                      textStyle: UITextStyle.body.copyWith(
+                        color: UIColors.red,
+                      ),
+                      onPressed: () async {
+                        Get.bottomSheet(
+                          ChangeOrderStatusBottomSheet(
+                            order: order,
+                          ),
+                        );
+                      },
+                      isLoading: ordersController.changingOrderStatus.value,
+                    );
+                  }),
                 ],
               )
             ],
