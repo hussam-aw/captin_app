@@ -35,4 +35,13 @@ class OrderRepo {
     }
     return null;
   }
+
+  Future<Order?> changeOrderStatusToDelivered(orderId) async {
+    var response = await client.changeOrderStatusToDelivered(orderId);
+    if (response != "") {
+      final parsed = json.decode(response);
+      return Order.fromMap(parsed);
+    }
+    return null;
+  }
 }
