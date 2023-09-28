@@ -1,6 +1,7 @@
 import 'package:captin_app/Constants/ui_colors.dart';
 import 'package:captin_app/Constants/ui_text_styles.dart';
 import 'package:captin_app/DataAccesslayer/Models/order.dart';
+import 'package:captin_app/PresentationLayer/Widgets/Private/change_order_status_bottom_sheet.dart';
 import 'package:captin_app/PresentationLayer/Widgets/Private/order_info_box.dart';
 import 'package:captin_app/PresentationLayer/Widgets/Private/order_item_box.dart';
 import 'package:captin_app/PresentationLayer/Widgets/Public/accept_button.dart';
@@ -118,7 +119,11 @@ class OrderInfoScreen extends StatelessWidget {
                     textStyle: UITextStyle.body.copyWith(
                       color: UIColors.red,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.bottomSheet(ChangeOrderStatusBottomSheet(
+                        order: order,
+                      ));
+                    },
                   ),
                 ],
               )
