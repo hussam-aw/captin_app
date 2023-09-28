@@ -2,30 +2,18 @@ import 'package:captin_app/DataAccesslayer/Models/order_item.dart';
 
 class Order {
   final int id;
-  final int userId;
   final num total;
-  final int statusId;
-  final String notes;
-  final num discount;
-  final int isDiscount;
+  final String status;
   final String address;
-  final num lat;
-  final num long;
   List<OrderItem> details;
   final num deliveryFee;
   final String createdAt;
 
   Order({
     required this.id,
-    required this.userId,
     required this.total,
-    required this.statusId,
-    required this.notes,
-    required this.discount,
-    required this.isDiscount,
+    required this.status,
     required this.address,
-    required this.lat,
-    required this.long,
     required this.details,
     required this.deliveryFee,
     required this.createdAt,
@@ -34,15 +22,9 @@ class Order {
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
       id: map['id'] as int,
-      userId: map['user_id'] ?? 1,
       total: map['total'] != "" ? map['total'] : 0.0,
-      statusId: map['status_id'] ?? 0,
-      notes: map['notes'] ?? "",
-      discount: map['discount'] ?? 0.0,
-      isDiscount: map['is_discount'] ?? 0,
+      status: map['status'] ?? '',
       address: map['address'] ?? "",
-      lat: map['lat'] ?? 0.0,
-      long: map['long'] ?? 0.0,
       details: getDetailsList(map['details']),
       deliveryFee: map['delivery_fee'] ?? 0.0,
       createdAt: map['created_at'] ?? "",
@@ -51,15 +33,9 @@ class Order {
 
   Map<String, dynamic> toMap() {
     return {
-      'user_id': userId,
       'total': total,
-      'status_id': statusId,
-      'notes': notes,
-      'discount': discount,
-      'is_discount': isDiscount,
+      'status': status,
       'address': address,
-      'lat': lat,
-      'long': long,
       'delivery_fee': deliveryFee,
     };
   }
