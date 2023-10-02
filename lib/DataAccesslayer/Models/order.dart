@@ -4,6 +4,8 @@ class Order {
   final int id;
   final num total;
   final String status;
+  double lat;
+  double long;
   final String address;
   List<OrderItem> details;
   final num deliveryFee;
@@ -13,6 +15,8 @@ class Order {
     required this.id,
     required this.total,
     required this.status,
+    required this.lat,
+    required this.long,
     required this.address,
     required this.details,
     required this.deliveryFee,
@@ -24,6 +28,8 @@ class Order {
       id: map['id'] as int,
       total: map['total'] != "" ? map['total'] : 0.0,
       status: map['status'] ?? '',
+      lat: map['lat'].toDouble(),
+      long: map['long'].toDouble(),
       address: map['address'] ?? "",
       details: getDetailsList(map['details']),
       deliveryFee: map['delivery_fee'] ?? 0.0,
