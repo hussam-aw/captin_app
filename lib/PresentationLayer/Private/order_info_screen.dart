@@ -1,4 +1,5 @@
 import 'package:captin_app/BussinessLayer/Controllers/orders_controller.dart';
+import 'package:captin_app/Constants/get_routes.dart';
 import 'package:captin_app/Constants/ui_colors.dart';
 import 'package:captin_app/Constants/ui_text_styles.dart';
 import 'package:captin_app/DataAccesslayer/Models/order.dart';
@@ -73,7 +74,12 @@ class OrderInfoScreen extends StatelessWidget {
                               textStyle: UITextStyle.body.copyWith(
                                 color: UIColors.red,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(
+                                  AppRoutes.orderLocationScreen,
+                                  arguments: order,
+                                );
+                              },
                             ),
                           ],
                         ),
