@@ -1,3 +1,4 @@
+import 'package:captin_app/BussinessLayer/Controllers/meals_controller.dart';
 import 'package:captin_app/DataAccesslayer/Models/order.dart';
 import 'package:captin_app/DataAccesslayer/Models/order_state.dart';
 import 'package:captin_app/DataAccesslayer/Repositories/order_repo.dart';
@@ -12,6 +13,7 @@ class OrdersController extends GetxController {
   var ordersReceivingState = true.obs;
   var orderDeliveredStatus = false.obs;
   var changingOrderStatus = false.obs;
+  final mealsController = Get.put(MealsController());
 
   Future<void> getOrderStates() async {
     orderStates = await orderRepo.getOrderStates();
@@ -56,6 +58,7 @@ class OrdersController extends GetxController {
 
   @override
   void onInit() async {
+    await mealsController.getMeals();
     await getOrders();
     await getOrderStates();
     super.onInit();
