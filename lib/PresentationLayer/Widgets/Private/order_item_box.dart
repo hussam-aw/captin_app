@@ -1,15 +1,18 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
+import 'package:captin_app/BussinessLayer/Controllers/meals_controller.dart';
 import 'package:captin_app/Constants/ui_colors.dart';
 import 'package:captin_app/Constants/ui_styles.dart';
 import 'package:captin_app/Constants/ui_text_styles.dart';
 import 'package:captin_app/DataAccesslayer/Models/order_item.dart';
 import 'package:captin_app/PresentationLayer/Widgets/Public/spacer_height.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OrderItemBox extends StatelessWidget {
   OrderItemBox({super.key, required this.orderItem});
 
   final OrderItem orderItem;
+  final mealsController = Get.find<MealsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class OrderItemBox extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              orderItem.mealName,
+              mealsController.getMealFromId(orderItem.mealId)!.name,
               style: UITextStyle.body,
             ),
             spacerHeight(height: 12),
