@@ -1,6 +1,5 @@
 class OrderItem {
   int mealId;
-  String mealName;
   int qty;
   num price;
   num total;
@@ -8,7 +7,6 @@ class OrderItem {
 
   OrderItem({
     required this.mealId,
-    required this.mealName,
     required this.qty,
     required this.price,
     required this.total,
@@ -16,8 +14,7 @@ class OrderItem {
   });
 
   factory OrderItem.fromJson(Map<String, dynamic> json) => OrderItem(
-        mealId: json["id"],
-        mealName: json["meal"],
+        mealId: json["meal"],
         qty: json["quantity"],
         price: json["price"],
         total: json['total_price'],
@@ -25,8 +22,7 @@ class OrderItem {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": mealId,
-        "meal": mealName,
+        "meal": mealId,
         "quantity": qty,
         "price": price,
         "total_price": total,
