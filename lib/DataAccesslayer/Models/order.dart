@@ -32,7 +32,7 @@ class Order {
       long: map['long'].toDouble(),
       address: map['address'] ?? "",
       details: getDetailsList(map['details']),
-      deliveryFee: map['delivery_fee'],
+      deliveryFee: map['delivery_fee'] ?? 0,
       createdAt: map['created_at'] ?? "",
     );
   }

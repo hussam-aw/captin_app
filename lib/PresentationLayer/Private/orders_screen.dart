@@ -70,7 +70,8 @@ class OrdersScreen extends StatelessWidget {
               ),
               const PageTitle(title: 'الطلبات'),
               spacerHeight(),
-              Expanded(
+              Flexible(
+                fit: FlexFit.tight,
                 child: Obx(
                   () {
                     return ordersController.ordersReceivingState.value
