@@ -10,7 +10,6 @@ class OrdersController extends GetxController {
   List<Order> orders = [];
   List<OrderState> orderStates = [];
   var isLoadingOrders = false.obs;
-  var ordersReceivingState = true.obs;
   var orderDeliveredStatus = false.obs;
   var changingOrderStatus = false.obs;
   final mealsController = Get.put(MealsController());
@@ -23,10 +22,6 @@ class OrdersController extends GetxController {
     isLoadingOrders.value = true;
     orders = await orderRepo.getOrders();
     isLoadingOrders.value = false;
-  }
-
-  void toggleOrdersReceivingState() {
-    ordersReceivingState.value = !ordersReceivingState.value;
   }
 
   Future<void> changeOrderStatus(orderId, statusId) async {

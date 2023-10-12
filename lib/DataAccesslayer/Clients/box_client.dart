@@ -4,7 +4,7 @@ import '../Models/user.dart';
 class BoxClient {
   var box = GetStorage();
   Future<bool> getAuthState() async {
-    if (await box.read('ord_captainy_authed') != null) {
+    if (await box.read('ord_captain_authed') != null) {
       return true;
     }
     return false;
@@ -15,12 +15,12 @@ class BoxClient {
   }
 
   Future<void> setAuthedUser(User user) async {
-    await box.write('ord_captainy_authed', true);
+    await box.write('ord_captain_authed', true);
     await box.write('ord_captain_userdata', user.toJson());
   }
 
   Future<void> removeUserData() async {
-    await box.remove('ord_captainy_authed');
+    await box.remove('ord_captain_authed');
     await box.remove('ord_captain_userdata');
   }
 
