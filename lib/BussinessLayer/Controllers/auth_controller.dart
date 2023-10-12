@@ -1,3 +1,4 @@
+import 'package:captin_app/BussinessLayer/Controllers/user_controller.dart';
 import 'package:captin_app/Constants/get_routes.dart';
 import 'package:captin_app/DataAccesslayer/Clients/box_client.dart';
 import 'package:captin_app/DataAccesslayer/Models/user.dart';
@@ -13,6 +14,7 @@ class AuthController extends GetxController {
   UserRepo userRepo = UserRepo();
   BoxClient boxClient = BoxClient();
   var logging = false.obs;
+  final userController = Get.put(UserController());
 
   Future<void> login() async {
     logging.value = true;
@@ -20,10 +22,10 @@ class AuthController extends GetxController {
         passwordController.value.text.isNotEmpty) {
       User? user = await userRepo.login(
           phoneNumberController.value.text, passwordController.value.text);
-
       if (user != null) {
         MyApp.appUser = user;
         await boxClient.setAuthedUser(user);
+        MyApp.isAvailable = await userController.getCaptainAvailability();
         SnackBars.showSuccess("${'أهلاً بك'}${user.name}");
         Get.toNamed(AppRoutes.ordersScreen);
       } else {
