@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "923368661150",
+    "project_id": "captain-app-b4645",
+    "storage_bucket": "captain-app-b4645.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923368661150:android:03877ac9307f0e13d85b8f",
+        "android_client_info": {
+          "package_name": "com.example.captin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB2p0u_EBbr5J8sqlMyqb8j0cnY_L4tjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
