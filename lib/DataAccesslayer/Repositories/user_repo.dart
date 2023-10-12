@@ -13,4 +13,20 @@ class UserRepo {
     }
     return null;
   }
+
+  Future<bool> updateCaptainAvailability(state) async {
+    var data = await client.updateCaptainAvailability(state);
+    if (data != null) {
+      return true;
+    }
+    return false;
+  }
+
+  Future<int?> getCaptainAvailability() async {
+    var data = await client.getCaptainAvailability();
+    if (data != null) {
+      return int.parse(data);
+    }
+    return null;
+  }
 }
