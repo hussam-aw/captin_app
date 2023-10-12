@@ -4,6 +4,7 @@ class User {
   String region;
   String phone;
   int roleId;
+  bool available;
   DateTime createdAt;
 
   User({
@@ -12,6 +13,7 @@ class User {
     required this.region,
     required this.phone,
     required this.roleId,
+    required this.available,
     required this.createdAt,
   });
 
@@ -21,6 +23,7 @@ class User {
         region: json["user"]["region"],
         phone: json["user"]["phone"],
         roleId: json["user"]["role_id"],
+        available: getCounterCaptainAvailability(json["user"]["available"]),
         createdAt: DateTime.parse(json["user"]["created_at"]),
       );
 
@@ -30,6 +33,7 @@ class User {
         region: json["region"],
         phone: json["phone"],
         roleId: json["role_id"],
+        available: json["available"],
         createdAt: DateTime.parse(json["created_at"]),
       );
 
@@ -41,4 +45,11 @@ class User {
         "role_id": roleId,
         "created_at": createdAt.toIso8601String(),
       };
+
+  static bool getCounterCaptainAvailability(int state) {
+    if (state == 1) {
+      return true;
+    }
+    return false;
+  }
 }
