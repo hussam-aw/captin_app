@@ -44,4 +44,12 @@ class OrderRepo {
     }
     return null;
   }
+
+  Future<bool> selectOrder(orderId) async {
+    var response = await client.selectOrder(orderId);
+    if (response != "") {
+      return true;
+    }
+    return false;
+  }
 }

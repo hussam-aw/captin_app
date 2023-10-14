@@ -13,6 +13,7 @@ class OrdersController extends GetxController {
   var orderDeliveredStatus = false.obs;
   var changingOrderStatus = false.obs;
   final mealsController = Get.put(MealsController());
+  final isSelectingOrder = false.obs;
 
   Future<void> getOrderStates() async {
     orderStates = await orderRepo.getOrderStates();
@@ -48,6 +49,19 @@ class OrdersController extends GetxController {
       SnackBars.showSuccess('تم توصيل الطلب');
     } else {
       SnackBars.showError('حدث خطأ أثناء تغيير حالة الطلب');
+    }
+  }
+
+  Future<void> selectOrder(orderId) async {
+    isSelectingOrder.value = true;
+    bool isOrderSelected = await orderRepo.selectOrder(orderId);
+    if (isOrderSelected) {
+      await getOrders();
+      isSelectingOrder.value = false;
+      Get.back();
+      SnackBars.showSuccess('تم قبول الطلب');
+    } else {
+      SnackBars.showError('حدث خطأ أثناء قبول الطلب الطلب');
     }
   }
 
