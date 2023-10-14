@@ -1,4 +1,6 @@
 import 'package:captin_app/Constants/get_routes.dart';
+import 'package:captin_app/PresentationLayer/Private/captain_screen.dart';
+import 'package:captin_app/PresentationLayer/Private/confirm_order_screen.dart';
 import 'package:captin_app/PresentationLayer/Private/notifications_screen.dart';
 import 'package:captin_app/PresentationLayer/Private/order_info_screen.dart';
 import 'package:captin_app/PresentationLayer/Private/order_location_screen.dart.dart';
@@ -36,5 +38,13 @@ List<GetPage<dynamic>> getPages = [
   GetPage(
     name: AppRoutes.profileScreen,
     page: () => ProfileScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.captainScreen,
+    page: () => CaptainScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.confirmOrderScreen,
+    page: () => ConfirmOrderScreen(),
   ),
 ];
