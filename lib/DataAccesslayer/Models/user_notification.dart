@@ -1,3 +1,6 @@
+import 'package:captin_app/DataAccesslayer/Models/order.dart';
+import 'package:captin_app/DataAccesslayer/Models/user.dart';
+
 class UserNotification {
   int id;
   String title;
@@ -25,7 +28,9 @@ class UserNotification {
         title: json["title"],
         subtitle: json["subtitle"],
         type: json["type"],
-        data: json["data"],
+        data: json["type"] == 'order'
+            ? Order.fromMap(json["data"])
+            : User.fromJson(json["data"]),
         date: json["date"],
         userId: json["user_id"],
         createdAt: DateTime.parse(json["created_at"]),
