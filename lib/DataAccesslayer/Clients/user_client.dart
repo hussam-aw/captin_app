@@ -48,4 +48,28 @@ class UserClient {
       return "";
     }
   }
+
+  Future<dynamic> updateUserInfo(
+      userName, mobilePhone, password, avatar) async {
+    var request =
+        http.MultipartRequest('POST', Uri.parse('$baseUrl$updateProfileLink'));
+    request.fields.addAll({
+      'name': userName.toString(),
+      'phone': mobilePhone.toString(),
+      'password': password.toString(),
+      'user_id': MyApp.appUser!.id.toString(),
+    });
+
+    if (avatar.isNotEmpty) {
+      request.files.add(await http.MultipartFile.fromPath('avatar', avatar));
+    }
+
+    http.StreamedResponse response = await request.send();
+    //print(await response.stream.bytesToString());
+    if (response.statusCode == 201) {
+      return await response.stream.bytesToString();
+    } else {
+      return null;
+    }
+  }
 }
