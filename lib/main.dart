@@ -1,3 +1,4 @@
+import 'package:captin_app/BussinessLayer/Helpers/firebase_helper.dart';
 import 'package:captin_app/BussinessLayer/Helpers/local_notification_helper.dart';
 import 'package:captin_app/Constants/get_pages.dart';
 import 'package:captin_app/Constants/ui_themes.dart';
@@ -10,6 +11,8 @@ import 'package:get_storage/get_storage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseHelper().requestNotificationPermissions();
+  FirebaseHelper().configureFirebaseMessaging();
   await GetStorage.init();
   await LocalNotificationHelper.initialize();
   runApp(const MyApp());
