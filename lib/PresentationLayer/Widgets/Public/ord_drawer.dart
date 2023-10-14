@@ -32,9 +32,11 @@ class OrdDrawer extends StatelessWidget {
             ),
             currentAccountPicture: CircleAvatar(
               backgroundColor: UIColors.lightGrey,
-              backgroundImage: AssetImage(
-                'assets/images/logo.png',
-              ),
+              backgroundImage: MyApp.appUser!.avatar.isNotEmpty
+                  ? NetworkImage(MyApp.appUser!.avatar)
+                  : const AssetImage(
+                      'assets/images/logo.png',
+                    ) as ImageProvider,
             ),
           ),
           if (MyApp.appUser != null)
@@ -42,7 +44,7 @@ class OrdDrawer extends StatelessWidget {
               title: 'الملف الشخصي',
               iconData: Icons.people,
               onTap: () {
-                //Get.toNamed(AppRoutes.profileScreen);
+                Get.toNamed(AppRoutes.profileScreen);
               },
             ),
           DrawerListTile(
