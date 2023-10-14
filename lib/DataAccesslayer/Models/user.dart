@@ -3,8 +3,9 @@ class User {
   String name;
   String region;
   String phone;
+  String address;
   int roleId;
-  bool available;
+  String avatar;
   DateTime createdAt;
 
   User({
@@ -12,8 +13,9 @@ class User {
     required this.name,
     required this.region,
     required this.phone,
+    required this.address,
     required this.roleId,
-    required this.available,
+    required this.avatar,
     required this.createdAt,
   });
 
@@ -22,18 +24,20 @@ class User {
         name: json["user"]["name"],
         region: json["user"]["region"],
         phone: json["user"]["phone"],
+        address: json["user"]['address'] ?? '',
         roleId: json["user"]["role_id"],
-        available: getCounterCaptainAvailability(json["user"]["available"]),
+        avatar: json["user"]["avatar"],
         createdAt: DateTime.parse(json["user"]["created_at"]),
       );
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
         name: json["name"],
-        region: json["region"],
+        region: json["region"] ?? '',
         phone: json["phone"],
+        address: json['address'] ?? '',
         roleId: json["role_id"],
-        available: json["available"],
+        avatar: json["avatar"],
         createdAt: DateTime.parse(json["created_at"]),
       );
 
@@ -42,7 +46,9 @@ class User {
         "name": name,
         "region": region,
         "phone": phone,
+        "address": address,
         "role_id": roleId,
+        "avatar": avatar,
         "created_at": createdAt.toIso8601String(),
       };
 
