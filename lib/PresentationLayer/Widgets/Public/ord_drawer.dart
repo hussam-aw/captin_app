@@ -54,6 +54,13 @@ class OrdDrawer extends StatelessWidget {
               Get.toNamed(AppRoutes.ordersScreen);
             },
           ),
+          DrawerListTile(
+            title: 'قبول الطلب',
+            iconData: Icons.shopping_cart,
+            onTap: () {
+              Get.toNamed(AppRoutes.confirmOrderScreen);
+            },
+          ),
           if (MyApp.appUser != null)
             DrawerListTile(
               title: 'تسجيل الخروج',
