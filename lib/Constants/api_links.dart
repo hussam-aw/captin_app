@@ -8,3 +8,4 @@ const editStatusOrderLink = "/editStatusOrder";
 const updateAvailableStateLink = "/updateAvailable";
 const getAvailableStateLink = "/getAvailable";
 const notificationsLink = "/notifications";
+const selectOrderLink = "/selectOrder";
