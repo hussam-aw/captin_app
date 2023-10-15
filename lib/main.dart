@@ -11,8 +11,7 @@ import 'package:get_storage/get_storage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseHelper().requestNotificationPermissions();
-  FirebaseHelper().configureFirebaseMessaging();
+  FirebaseMessagingHelper.initialize();
   await GetStorage.init();
   await LocalNotificationHelper.initialize();
   runApp(const MyApp());
