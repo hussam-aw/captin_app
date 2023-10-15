@@ -1,22 +1,39 @@
+import 'package:captin_app/BussinessLayer/Helpers/local_notification_helper.dart';
+import 'package:captin_app/Constants/get_routes.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:get/get.dart';
 
-class FirebaseHelper {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+class FirebaseMessagingHelper {
+  static final FirebaseMessaging _firebaseMessaging =
+      FirebaseMessaging.instance;
 
-  void configureFirebaseMessaging() {
+  static void initialize() {
+    _firebaseMessaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      sound: true,
+      criticalAlert: false,
+    );
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print(message);
+      receiveNotification(message);
     });
+
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print(message);
+      openNotification(message);
     });
   }
 
-  void requestNotificationPermissions() async {
-    await _firebaseMessaging.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
+  static void receiveNotification(RemoteMessage message) {
+    LocalNotificationHelper.showNotification(
+      0,
+      message.notification?.title ?? 'New Notification',
+      message.notification?.body ?? '',
     );
+  }
+
+  static void openNotification(RemoteMessage message) {
+    Get.toNamed(AppRoutes.confirmOrderScreen, arguments: message);
   }
 }
